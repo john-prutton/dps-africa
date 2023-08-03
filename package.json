@@ -14,14 +14,25 @@
     "@types/react-dom": "18.2.7",
     "@unocss/postcss": "^0.54.1",
     "autoprefixer": "10.4.14",
+    "browserlist": "^1.0.1",
     "eslint": "8.46.0",
     "eslint-config-next": "13.4.12",
+    "lightningcss": "^1.21.5",
     "next": "13.4.12",
     "postcss": "8.4.27",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "tailwindcss": "3.3.3",
     "typescript": "5.1.6",
-    "unocss": "^0.54.1"
-  }
+    "unocss": "^0.54.1",
+    "unocss-preset-autoprefixer": "^0.0.6"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not ie <= 11",
+    "Android >= 4.0",
+    "iOS >= 8"
+  ]
 }
