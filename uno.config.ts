@@ -2,8 +2,16 @@ import { defineConfig, presetWind } from "unocss"
 import presetAutoprefixer from "unocss-preset-autoprefixer"
 import presetShadcn from "./preset.shadcn"
 
+
+var presets = [
+    presetWind(),
+    presetShadcn(),
+]
+if (process.env.PREFIX) presets.push(presetAutoprefixer())
+
+
 export default defineConfig({
-    presets: [presetWind(), presetAutoprefixer(), presetShadcn()],
+    presets,
 
     // shadcn-ui
     preflights: [
