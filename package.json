@@ -6,9 +6,14 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "ui": "shadcn-ui add"
   },
   "dependencies": {
+    "@radix-ui/react-slot": "^1.0.2",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.0.0",
+    "lucide-react": "^0.263.1",
     "next": "13.4.12",
     "react": "18.2.0",
     "react-dom": "18.2.0"
@@ -18,12 +23,15 @@
     "@types/react": "18.2.18",
     "@types/react-dom": "18.2.7",
     "@unocss/postcss": "^0.54.1",
+    "@unocss/preset-mini": "^0.54.1",
     "autoprefixer": "10.4.14",
     "browserlist": "^1.0.1",
     "eslint": "8.46.0",
     "eslint-config-next": "13.4.12",
     "lightningcss": "^1.21.5",
     "postcss": "8.4.27",
+    "shadcn-ui": "^0.3.0",
+    "tailwind-merge": "^1.14.0",
     "typescript": "5.1.6",
     "unocss": "^0.54.1",
     "unocss-preset-autoprefixer": "^0.0.6"

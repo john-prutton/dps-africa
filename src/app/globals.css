@@ -1,2 +1,6 @@
 @import "@unocss/reset/tailwind.css";
 @unocss;
+
+body {
+  @apply bg-background text-foreground;
+}
