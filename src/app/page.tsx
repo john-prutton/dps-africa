@@ -1,5 +1,8 @@
-import { Button } from "@/components/ui/button"
-
+import PaletteChecker from "@/components/ui/palette-checker"
 export default function Home() {
-  return <main className="min-h-screen flex bg-dark"></main>
+  return (
+    <main className="min-h-screen">
+      <PaletteChecker />
+    </main>
+  )
 }
