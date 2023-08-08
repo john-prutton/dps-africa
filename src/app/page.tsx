@@ -23,19 +23,28 @@ function Hero() {
 				placeholder="blur"
 				blurDataURL={heroImg.blurDataURL}
 				fill
-				className="object-cover --brightness-30"
+				className="object-cover"
 			/>
 
-			<div className="absolute bg-background/90 w-full h-full" />
+			{/* Mask */}
+			<svg className="absolute w-full h-screen ">
+				<defs>
+					<mask id="myMask">
+						<rect className="w-full h-full fill-white" />
+						<circle
+							cx="100%"
+							cy="50%"
+							r="max(50vw, 50vh)"
+							fill="black"
+						/>
+					</mask>
+				</defs>
 
-			<Image
-				src={heroImg.src}
-				alt="A picture of a stretch ceiling office."
-				placeholder="blur"
-				blurDataURL={heroImg.blurDataURL}
-				fill
-				className="object-cover  [clip-path:circle(50vw_at_100%_50%)]"
-			/>
+				<rect
+					className="w-full h-full fill-background/80"
+					mask="url(#myMask)"
+				/>
+			</svg>
 
 			<div className="absolute left-1/2 -translate-x-[min(50vw,45rem)] top-1/2 -translate-y-1/2 max-w-[min(50vw,40rem)]">
 				<h1 className="font-black text-5xl text-primary mb-8">
