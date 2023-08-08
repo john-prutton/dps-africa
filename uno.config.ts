@@ -1,4 +1,4 @@
-import { defineConfig, presetWind } from "unocss"
+import { defineConfig, presetTypography, presetWebFonts, presetWind } from "unocss"
 import presetAutoprefixer from "unocss-preset-autoprefixer"
 import presetShadcn from "./preset.shadcn"
 
@@ -6,6 +6,15 @@ import presetShadcn from "./preset.shadcn"
 var presets = [
     presetWind(),
     presetShadcn(),
+    presetWebFonts({
+        provider: "bunny",
+        fonts: {
+            sans: {
+                name: "Poppins",
+                weights: [100, 200, 300, 400, 500, 600, 700, 800, 900]
+            },
+        }
+    })
 ]
 if (process.env.PREFIX) presets.push(presetAutoprefixer())
 
@@ -18,8 +27,8 @@ export default defineConfig({
         {
             getCSS: () => `
                 :root {
-                    --background: 0,0%,100%;
-                    --foreground: 222.2,84%,4.9%;
+                    --background: 0,0%,0%;
+                    --foreground: 0,100%,100%;
                 
                     --muted: 210,40%,96.1%;
                     --muted-foreground: 215.4,16.3%,46.9%;
@@ -33,7 +42,7 @@ export default defineConfig({
                     --border: 214.3,31.8%,91.4%;
                     --input: 214.3,31.8%,91.4%;
                 
-                    --primary: 222.2,47.4%,11.2%;
+                    --primary: 196,100%,45%;
                     --primary-foreground: 210,40%,98%;
                 
                     --secondary: 210,40%,96.1%;
