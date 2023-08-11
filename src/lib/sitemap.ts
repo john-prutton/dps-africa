@@ -4,8 +4,8 @@ interface ILink {
 }
 
 const links: ILink[] = [
-  { title: "Projects", link: "" },
-  { title: "Catelogue", link: "/DPS_samplebook.pdf" },
+  { title: "Gallery", link: "" },
+  { title: "Sample Book", link: "/DPS_samplebook.pdf" },
   { title: "Contact Us", link: "/contact" },
 ]
 
