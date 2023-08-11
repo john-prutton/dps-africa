@@ -4,10 +4,9 @@ interface ILink {
 }
 
 const links: ILink[] = [
-  { title: "Home", link: "" },
   { title: "Projects", link: "" },
   { title: "Catelogue", link: "" },
-  { title: "Contact Us", link: "" },
+  { title: "Contact Us", link: "/contact" },
 ]
 
 export { links }

@@ -16,14 +16,16 @@ import { Button } from "./ui/button"
 
 export default function MainNav() {
 	return (
-		<div className="backdrop-blur bg-background/50 sticky top-0">
+		<div className="backdrop-blur bg-background/50 fixed top-0 w-full z-1">
 			<div className="container mx-auto p-8 flex flex-row items-center">
-				<Image
-					src={logo.src}
-					alt="DPS Logo"
-					width={logo.width}
-					height={logo.height}
-				/>
+				<Link href={"/"}>
+					<Image
+						src={logo.src}
+						alt="DPS Logo"
+						width={logo.width}
+						height={logo.height}
+					/>
+				</Link>
 				<NavigationMenu className="max-w-full children:w-full">
 					<NavigationMenuList className="justify-evenly">
 						{links.map(({ title, link }, i) => (

@@ -36,11 +36,11 @@ export default defineConfig({
                     --popover: 0,0%,100%;
                     --popover-foreground: 222.2,84%,4.9%;
                 
-                    --card: 0,0%,100%;
+                    --card: 0,0%,0%;
                     --card-foreground: 222.2,84%,4.9%;
                 
-                    --border: 214.3,31.8%,91.4%;
-                    --input: 214.3,31.8%,91.4%;
+                    --border: 0,0%,0%;
+                    --input: 0,0%,0%;
                 
                     --primary: 196,100%,45%;
                     --primary-foreground: 210,40%,98%;

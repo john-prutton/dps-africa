@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button"
 
 export default function Home() {
 	return (
-		<main className="min-h-screen">
+		<main>
 			<Hero />
 			<PaletteChecker />
 		</main>
@@ -71,8 +71,6 @@ function Hero() {
 					</Button>
 				</div>
 			</div>
-
-			<MainNav />
 		</section>
 	)
 }
