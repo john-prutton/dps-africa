@@ -30,7 +30,13 @@ export default function MainNav() {
 					<NavigationMenuList className="justify-evenly">
 						{links.map(({ title, link }, i) => (
 							<Button asChild variant={"ghost"} key={i}>
-								<Link href={link} className="text-4.25!">
+								<Link
+									href={link}
+									className="text-4.25!"
+									{...(title == "Sample Book" && {
+										target: "_blank",
+									})}
+								>
 									{title.toUpperCase()}
 								</Link>
 							</Button>
