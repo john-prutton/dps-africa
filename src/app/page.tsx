@@ -1,11 +1,14 @@
 import Hero from "@/components/hero"
-import PaletteChecker from "@/components/palette-checker"
+import { ScrollSlider } from "@/components/scroll-slider"
 
 export default function Home() {
 	return (
 		<main>
-			<Hero />
-			<PaletteChecker />
+			<ScrollSlider>
+				<Hero />
+				<Hero />
+				<Hero />
+			</ScrollSlider>
 		</main>
 	)
 }
