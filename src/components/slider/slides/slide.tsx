@@ -12,10 +12,10 @@ export function Slide({ title, subtext, flip = false, img }: ISlideProps) {
 		<div>
 			<Image
 				src={img.src}
-				quality={50}
 				alt=""
+				quality={100}
 				fill
-				sizes="min-width(200px) 100px"
+				sizes="(max-width: 400px) 800px, (max-width: 600px) 1200px, 100vw"
 				className="object-cover"
 			/>
 
