@@ -3,12 +3,6 @@ import React, { useEffect } from "react"
 import { gsap } from "gsap"
 import ScrollTrigger from "gsap/ScrollTrigger"
 
-import { InfoSection } from "./info-section"
-import Link from "next/link"
-import heroImg from "@/../public/dps-ceilings-1.jpg"
-import { Button } from "@/components/ui/button"
-import Hero from "./hero"
-
 function initGSAP() {
 	gsap.registerPlugin(ScrollTrigger)
 
@@ -19,21 +13,27 @@ function initGSAP() {
 		scrollTrigger: {
 			trigger: slider,
 			pin: true,
-			scrub: 0,
-			end: 3000,
+			scrub: 1,
+			end: () => "+=" + 1000 * slides.length,
 		} as ScrollTrigger.Vars,
 	})
 
 	slides.forEach((slide, i) => {
 		if (i === 0) return
-		tl.from(slide, {
-			xPercent: 100,
-			ease: "none",
-		})
+		tl.fromTo(
+			slide,
+			{
+				opacity: 0,
+				ease: "none",
+			},
+			{
+				opacity: 1.25,
+			}
+		)
 	})
 }
 
-export function ScrollSlider() {
+export function Slider({ children }: { children: React.ReactNode }) {
 	useEffect(() => {
 		initGSAP()
 	}, [])
@@ -41,11 +41,9 @@ export function ScrollSlider() {
 	return (
 		<div
 			id="slider"
-			className="relative overflow-x-hidden w-screen h-screen flex flex-row children:absolute!"
+			className="relative overflow-hidden w-full h-screen children:absolute! children:inset-0"
 		>
-			<Hero />
-			<Hero />
-			<Hero />
+			{children}
 		</div>
 	)
 }

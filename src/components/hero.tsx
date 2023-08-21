@@ -4,7 +4,7 @@ import heroImg from "@/../public/dps-ceilings-1.jpg"
 import { Button } from "@/components/ui/button"
 import { InfoSection } from "./info-section"
 
-export default function Hero() {
+export function Hero() {
 	return (
 		<InfoSection img={heroImg}>
 			<h1 className="font-black text-5xl text-primary mb-8">

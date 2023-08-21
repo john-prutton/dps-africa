@@ -1,14 +1,17 @@
+import { cn } from "@/lib/utils"
 import Image, { type StaticImageData } from "next/image"
 
 export function InfoSection({
 	img,
 	children,
+	className,
 }: {
 	img: StaticImageData
 	children: React.ReactNode
+	className?: string
 }) {
 	return (
-		<article className="w-screen h-screen relative">
+		<article className={cn(className, "w-full h-screen relative")}>
 			{/* Background image */}
 			<Image
 				src={img.src}
