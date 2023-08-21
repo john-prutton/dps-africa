@@ -71,13 +71,14 @@ const slides: ISlideProps[] = [
 export default function Home() {
 	return (
 		<main>
-			<Slider>
-				<Hero />
+			<Hero />
 
+			<Slider>
 				{slides.map((slide, i) => (
 					<Slide {...slide} key={i} flip={i % 2 != 0} />
 				))}
 			</Slider>
+
 			<div className="w-full h-screen bg-yellow" />
 		</main>
 	)

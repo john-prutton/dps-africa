@@ -15,6 +15,7 @@ function initGSAP() {
 			pin: true,
 			scrub: 1,
 			end: () => "+=" + 1000 * slides.length,
+			snap: 1 / (slides.length - 1),
 		} as ScrollTrigger.Vars,
 	})
 
@@ -27,7 +28,7 @@ function initGSAP() {
 				ease: "none",
 			},
 			{
-				opacity: 1.25,
+				opacity: 1.2,
 			}
 		)
 	})

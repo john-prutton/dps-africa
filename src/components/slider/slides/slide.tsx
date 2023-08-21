@@ -15,6 +15,7 @@ export function Slide({ title, subtext, flip = false, img }: ISlideProps) {
 				quality={50}
 				alt=""
 				fill
+				sizes="min-width(200px) 100px"
 				className="object-cover"
 			/>
 
