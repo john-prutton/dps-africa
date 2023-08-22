@@ -1,50 +1,82 @@
 "use client"
-import React, { useEffect } from "react"
-import { gsap } from "gsap"
-import ScrollTrigger from "gsap/ScrollTrigger"
 
-function initGSAP() {
-	gsap.registerPlugin(ScrollTrigger)
+import React, { useCallback, useEffect, useState } from "react"
+import { flushSync } from "react-dom"
+import useEmblaCarousel, { EmblaOptionsType } from "embla-carousel-react"
 
-	const slider = document.querySelector("#slider")!
-	const slides = gsap.utils.toArray<HTMLElement>(slider.children)
+const TWEEN_FACTOR = 3
+const numberWithinRange = (number: number, min: number, max: number): number =>
+	Math.min(Math.max(number, min), max)
 
-	const tl = gsap.timeline({
-		scrollTrigger: {
-			trigger: slider,
-			pin: true,
-			scrub: 1,
-			end: () => "+=" + 1000 * slides.length,
-			snap: 1 / (slides.length - 1),
-		} as ScrollTrigger.Vars,
-	})
-
-	slides.forEach((slide, i) => {
-		if (i === 0) return
-		tl.fromTo(
-			slide,
-			{
-				opacity: 0,
-				ease: "none",
-			},
-			{
-				opacity: 1.2,
-			}
-		)
-	})
+type SliderPropsType = {
+	children: React.ReactNode[]
+	options?: EmblaOptionsType
 }
 
-export function Slider({ children }: { children: React.ReactNode }) {
+export function Slider({ children, options }: SliderPropsType) {
+	const [emblaRef, emblaApi] = useEmblaCarousel(options)
+	const [tweenValues, setTweenValues] = useState<number[]>([])
+
+	const onScroll = useCallback(() => {
+		if (!emblaApi) return
+
+		const engine = emblaApi.internalEngine()
+		const scrollProgress = emblaApi.scrollProgress()
+
+		const styles = emblaApi.scrollSnapList().map((scrollSnap, index) => {
+			let diffToTarget = scrollSnap - scrollProgress
+
+			if (engine.options.loop) {
+				engine.slideLooper.loopPoints.forEach((loopItem) => {
+					const target = loopItem.target()
+					if (index === loopItem.index && target !== 0) {
+						const sign = Math.sign(target)
+						if (sign === -1)
+							diffToTarget = scrollSnap - (1 + scrollProgress)
+						if (sign === 1)
+							diffToTarget = scrollSnap + (1 - scrollProgress)
+					}
+				})
+			}
+			const tweenValue = 1 - Math.abs(diffToTarget * TWEEN_FACTOR)
+			return numberWithinRange(tweenValue, 0, 1)
+		})
+		setTweenValues(styles)
+	}, [emblaApi, setTweenValues])
+
 	useEffect(() => {
-		initGSAP()
-	}, [])
+		if (!emblaApi) return
+
+		onScroll()
+		emblaApi.on("scroll", () => {
+			flushSync(() => onScroll())
+		})
+		emblaApi.on("reInit", onScroll)
+	}, [emblaApi, onScroll])
 
 	return (
-		<div
-			id="slider"
-			className="relative overflow-hidden w-full h-screen children:absolute! children:inset-0"
-		>
-			{children}
+		<div className="[--slide-spacing:0] [--slide-size:100%]">
+			<div className="overflow-hidden" ref={emblaRef}>
+				<div className="flex backface-hidden touch-pan-y ml-[calc(var(--slide-spacing)*-1)]">
+					{children.map((slide, index) => (
+						<div
+							className="relative flex-[0_0_var(--slide-size)] pl-[var(--slide-spacing)] h-screen"
+							key={index}
+						>
+							{/* <div
+								className="relative h-full backface-hidden"
+								style={{
+									...(tweenValues.length && {
+										transform: `scale(${tweenValues[index]})`,
+									}),
+								}}
+							> */}
+							{slide}
+						</div>
+						// </div>
+					))}
+				</div>
+			</div>
 		</div>
 	)
 }

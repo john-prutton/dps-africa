@@ -75,7 +75,7 @@ export default function Home() {
 
 			<Slider>
 				{slides.map((slide, i) => (
-					<Slide {...slide} key={i} flip={i % 2 != 0} />
+					<Slide {...slide} flip={i % 2 == 1} key={i} />
 				))}
 			</Slider>
 
