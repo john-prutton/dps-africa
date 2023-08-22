@@ -9,7 +9,7 @@ export interface ISlideProps {
 
 export function Slide({ title, subtext, flip = false, img }: ISlideProps) {
 	return (
-		<div className="relative w-full h-full">
+		<div className="absolute left-0 w-full h-screen">
 			<Image
 				src={img.src}
 				alt=""

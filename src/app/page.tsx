@@ -78,8 +78,6 @@ export default function Home() {
 					<Slide {...slide} flip={i % 2 == 1} key={i} />
 				))}
 			</Slider>
-
-			<div className="w-full h-screen bg-yellow" />
 		</main>
 	)
 }
