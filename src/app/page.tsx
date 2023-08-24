@@ -1,5 +1,6 @@
 import { Hero } from "@/components/hero"
-import { Slider, Slide, type ISlideProps } from "@/components/slider"
+import { Slider } from "@/components/slider"
+import { Slide, type ISlideProps } from "@/components/slide"
 
 import img1 from "@/../public/dps-ceilings-3.jpg"
 import img2 from "@/../public/dps-ceilings-9.jpg"
