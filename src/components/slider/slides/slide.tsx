@@ -1,5 +1,7 @@
 import Image, { StaticImageData } from "next/image"
 
+import { cn } from "@/lib/utils"
+
 export interface ISlideProps {
 	title: string
 	subtext: string
@@ -13,21 +15,28 @@ export function Slide({ title, subtext, flip = false, img }: ISlideProps) {
 			<Image
 				src={img.src}
 				alt=""
-				quality={100}
+				placeholder="blur"
+				blurDataURL={img.blurDataURL}
 				fill
 				sizes="(max-width: 400px) 800px, (max-width: 600px) 1200px, 100vw"
 				className="object-cover"
 			/>
 
+			{/* Text container */}
 			<div
-				className={`absolute top-2/3 -translate-y-1/2 w-fit ${
-					flip ? "right-0" : "left-0"
-				}`}
+				className={cn(
+					"absolute",
+					"lt-sm:bg-primary/75 lt-sm:py-8 lt-sm:rounded-lg lt-sm:bottom-4 lt-sm:left-4 lt-sm:right-4",
+					"sm:bottom-0 sm:-translate-y-full sm:w-fit",
+					flip ? "sm:right-0" : "sm:left-0"
+				)}
 			>
+				{/* Background graphic */}
 				<svg
-					className={`absolute top-1/2 -translate-y-1/2 w-full scale-y-80 ${
-						flip && "-scale-x-100"
-					} opacity-70`}
+					className={cn(
+						"lt-sm:hidden absolute top-1/2 -translate-y-1/2 w-full lt-sm:scale-x-200 scale-y-80 opacity-70",
+						flip && "sm:-scale-x-100"
+					)}
 					viewBox="0 0 500 300"
 					fill="#00a8e6"
 					xmlns="http://www.w3.org/2000/svg"
@@ -45,12 +54,16 @@ export function Slide({ title, subtext, flip = false, img }: ISlideProps) {
 					</defs>
 				</svg>
 
+				{/* Text content */}
 				<div
-					className={`${
-						flip && "text-right"
-					} relative max-w-lg mx-32 drop-shadow-lg`}
+					className={cn(
+						"relative max-w-lg mx-4 sm:mx-32 drop-shadow-lg",
+						flip ? "sm:text-right" : "sm:text-left"
+					)}
 				>
-					<h2 className="text-5xl font-bold mb-4">{title}</h2>
+					<h2 className="text-2xl sm:text-4xl w-full font-bold mb-4">
+						{title}
+					</h2>
 					<p>{subtext}</p>
 				</div>
 			</div>

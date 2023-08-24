@@ -13,10 +13,7 @@ type SliderPropsType = {
 export function Slider({ children, options }: SliderPropsType) {
 	const [emblaRef, emblaAPI] = useEmblaCarousel(
 		{ inViewThreshold: 1, ...options },
-		[
-			EmblaClassNames({ snapped: "opacity-100" }),
-			EmblaAutoplay({ delay: 5000 }),
-		]
+		[EmblaClassNames(), EmblaAutoplay({ delay: 5000 })]
 	)
 	const [scrollProgress, setScrollProgress] = useState<number>(0)
 
@@ -51,7 +48,7 @@ export function Slider({ children, options }: SliderPropsType) {
 					{children.map((slide, index) => (
 						<div
 							key={index}
-							className="opacity-0 flex-[0_0_100%] transition-opacity-1000"
+							className="opacity-0 flex-[0_0_100%] transition-opacity-1000 [&.is-snapped]:opacity-100 [&.is-snapped]:z-1"
 						>
 							{slide}
 						</div>
