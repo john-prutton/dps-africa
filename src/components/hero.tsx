@@ -19,8 +19,8 @@ export function Hero() {
 			/>
 
 			{/* Floating Content */}
-			<div className="absolute w-90% left-1/2 -translate-x-1/2 bottom-1/10 sm:bottom-1/3 sm:translate-y-1/2 sm:w-2xl sm:max-w-90vw">
-				<h1 className="font-black text-2xl text-primary sm:text-5xl">
+			<div className="absolute w-90% left-1/2 -translate-x-1/2 bottom-1/2 translate-y-1/2 sm:bottom-1/3 sm:translate-y-1/2 sm:w-2xl sm:max-w-90vw">
+				<h1 className="font-black text-4xl text-primary sm:text-5xl">
 					STRETCH CEILINGS & WALLS
 				</h1>
 
