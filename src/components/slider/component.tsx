@@ -6,8 +6,6 @@ import useEmblaCarousel, { EmblaOptionsType } from "embla-carousel-react"
 import EmblaClassNames from "embla-carousel-class-names"
 import EmblaAutoplay from "embla-carousel-autoplay"
 
-import styles from "./styles.module.css"
-
 type SliderPropsType = {
 	children: React.ReactNode[]
 	options?: EmblaOptionsType
@@ -15,7 +13,10 @@ type SliderPropsType = {
 export function Slider({ children, options }: SliderPropsType) {
 	const [emblaRef, emblaAPI] = useEmblaCarousel(
 		{ inViewThreshold: 1, ...options },
-		[EmblaClassNames({ snapped: styles.active }), EmblaAutoplay()]
+		[
+			EmblaClassNames({ snapped: "opacity-100" }),
+			EmblaAutoplay({ delay: 5000 }),
+		]
 	)
 	const [scrollProgress, setScrollProgress] = useState<number>(0)
 
@@ -36,7 +37,7 @@ export function Slider({ children, options }: SliderPropsType) {
 
 	return (
 		<div className="relative">
-			<div className="z-2 overflow-hidden absolute bottom-4 left-1/2 -translate-x-1/2 h-2 w-1/3 bg-background">
+			<div className="z-1 overflow-hidden absolute bottom-0 left-1/2 -translate-x-1/2 h-2 w-full bg-background/20">
 				<div
 					className="bg-primary h-full"
 					style={{
@@ -45,10 +46,13 @@ export function Slider({ children, options }: SliderPropsType) {
 				></div>
 			</div>
 
-			<div className={styles.viewport} ref={emblaRef}>
-				<div className={styles.container}>
+			<div className="relative overflow-hidden" ref={emblaRef}>
+				<div className="flex flex-row h-screen">
 					{children.map((slide, index) => (
-						<div key={index} className={styles.slide}>
+						<div
+							key={index}
+							className="opacity-0 flex-[0_0_100%] transition-opacity-1000"
+						>
 							{slide}
 						</div>
 					))}
