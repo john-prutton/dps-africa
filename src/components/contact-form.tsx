@@ -66,7 +66,7 @@ const ContactForm: React.FC<{ className?: string }> = ({ className }) => {
 				onSubmit={form.handleSubmit(onSubmit)}
 				className={cn(
 					className,
-					"relative bg-card space-y-8 rounded-md p-8 shadow-md mx-auto max-w-5xl"
+					"relative lt-sm:mt-16 bg-card space-y-8 rounded-md p-8 shadow-md mx-auto max-w-5xl"
 				)}
 			>
 				<FormField
