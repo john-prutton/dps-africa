@@ -21,8 +21,8 @@ export default function MainNav() {
 					<Image src={logo.src} alt="DPS Logo" fill />
 				</Link>
 
-				<NavigationMenu className="lt-sm:hidden max-w-full children:w-full">
-					<NavigationMenuList className="justify-evenly">
+				<NavigationMenu className="lt-sm:hidden max-w-full justify-end">
+					<NavigationMenuList className="justify-center gap-8 md:gap-16 ">
 						<Links />
 					</NavigationMenuList>
 				</NavigationMenu>
@@ -40,7 +40,7 @@ export default function MainNav() {
 	)
 }
 
-function Links() {
+export function Links() {
 	return (
 		<>
 			{links.map(({ title, link }, i) => (

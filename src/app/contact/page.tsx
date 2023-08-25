@@ -5,7 +5,7 @@ import ContactForm from "@/components/contact-form"
 
 export default function Contact() {
 	return (
-		<main>
+		<main className="relative h-screen">
 			<Image
 				src={contactImg.src}
 				alt="DPS Ceiling photograph"

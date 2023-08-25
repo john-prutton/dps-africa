@@ -29,7 +29,7 @@ export function Hero() {
 					ideas.
 					<span className="lt-sm:hidden">
 						{" "}
-						Over 1 000 000 m2 of DPS stretch ceilings have been
+						Over 1 000 000 m² of DPS stretch ceilings have been
 						installed across the world in both commercial and
 						residential areas.
 					</span>

@@ -56,16 +56,7 @@ const ContactForm: React.FC<{ className?: string }> = ({ className }) => {
 
 		setIsLoading(false)
 
-		form.reset()
-
-		setTimeout(() => {
-			//@ts-expect-error
-			document.getElementById("fullNameInput").value = ""
-			//@ts-expect-error
-			document.getElementById("emailInput").value = ""
-			//@ts-expect-error
-			document.getElementById("messageInput").value = ""
-		}, 100)
+		form.reset({ email: "", fullName: "", message: "" })
 	}
 
 	return (
